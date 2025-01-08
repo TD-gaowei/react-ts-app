@@ -1,0 +1,21 @@
+# .github/workflows/common-steps.yml
+name: Common Steps
+
+on:
+  workflow_call: # 使工作流可以被调用
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16" # 设置 Node.js 版本（根据需要调整）
+
+      - name: Install dependencies
+        run: npm install

@@ -1,3 +1,4 @@
+# .github/workflows/ci.yml
 name: CI Workflow
 
 on:
@@ -13,21 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 检出代码
-      - name: Checkout code
-        uses: actions/checkout@v2
+      # 使用自定义 GitHub Action 设置 Node.js 并安装依赖
+      - name: Setup and Install Dependencies
+        uses: ./.github/workflows/common-steps.yml # 引用公共步骤
 
-      # 设置 Node.js 环境
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "16" # 设置 Node.js 版本（根据需要调整）
-
-      # 安装项目依赖
-      - name: Install dependencies
-        run: npm install
-
-      # 进行 TypeScript 类型检查
+      # 执行 TypeScript 类型检查
       - name: Type-check with tsc
         run: npm run type-check # 运行类型检查命令
 
@@ -35,20 +26,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 检出代码
-      - name: Checkout code
-        uses: actions/checkout@v2
+      # 使用自定义 GitHub Action 设置 Node.js 并安装依赖
+      - name: Setup and Install Dependencies
+        uses: ./.github/workflows/common-steps.yml
 
-      # 设置 Node.js 环境
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "16" # 设置 Node.js 版本（根据需要调整）
-
-      # 安装项目依赖
-      - name: Install dependencies
-        run: npm install
-
-      # 运行单元测试
+      # 执行单元测试
       - name: Run unit tests
         run: npm run test # 运行单元测试
