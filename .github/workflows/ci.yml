@@ -31,7 +31,6 @@ jobs:
       - name: Type-check with tsc
         run: npm run type-check # 运行类型检查命令
 
-
       # 运行单元测试
-      # - name: Run tests
-      #   run: npm test # 运行单元测试
+      - name: Run unit tests
+        run: npm run test # 运行单元测试
