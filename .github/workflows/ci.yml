@@ -16,7 +16,7 @@ jobs:
     steps:
       # 使用自定义 GitHub Action 设置 Node.js 并安装依赖
       - name: Setup and Install Dependencies
-        uses: ./.github/workflows/common-steps.yml # 引用公共步骤
+        uses: ./common-steps.yml # 引用公共步骤
 
       # 执行 TypeScript 类型检查
       - name: Type-check with tsc
@@ -28,7 +28,7 @@ jobs:
     steps:
       # 使用自定义 GitHub Action 设置 Node.js 并安装依赖
       - name: Setup and Install Dependencies
-        uses: ./.github/workflows/common-steps.yml
+        uses: ./common-steps.yml
 
       # 执行单元测试
       - name: Run unit tests
