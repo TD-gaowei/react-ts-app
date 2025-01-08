@@ -9,8 +9,31 @@ on:
       - main
 
 jobs:
+  eslint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 步骤 1: 检出代码
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 步骤 2: 设置 Node.js 环境
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      # 步骤 3: 安装依赖
+      - name: Install dependencies
+        run: npm install
+
+      # 步骤 4: 运行 ESLint 检查
+      - name: Run ESLint
+        run: npm run lint # 假设你的 `package.json` 中有配置 lint 命令
+
   type-check:
     runs-on: ubuntu-latest
+    needs: eslint  # 确保 type-check 依赖 eslint 作业
 
     steps:
       # 步骤 1: 检出代码
@@ -33,7 +56,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    needs: type-check # 这个作业依赖于 type-check 作业的成功
+    needs: eslint  # 确保 test 依赖 eslint 作业
 
     steps:
       # 步骤 1: 检出代码
