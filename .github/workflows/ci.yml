@@ -1,4 +1,4 @@
-name: react-ts-app Workflow
+name: CI Workflow
 
 on:
   push:
