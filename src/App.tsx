@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -6,11 +6,9 @@ import "./App.css";
 function App(): React.ReactElement {
   const [count, setCount] = useState<number>(0);
 
-  const divRef = useRef<HTMLDivElement | null>(null);
-
   return (
     <>
-      <div ref={divRef}>
+      <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
