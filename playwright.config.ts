@@ -16,6 +16,7 @@ const DEVICE_DESKTOP_CHROME = "Desktop Chrome";
 export default defineConfig({
   testDir: "./visual-regression-testing",
   snapshotDir: "./visual-regression-testing/snapshots",
+  snapshotPathTemplate: "{testDir}/snapshots/{testFilePath}/{arg}{ext}",
   expect: {
     toHaveScreenshot: {
       // An acceptable ratio of pixels that are different to the
