@@ -108,4 +108,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: playwright-test-results
-          path: test-results/ # 修改为你存放 Playwright 测试报告的路径
+          path: visual-regression-testing # 修改为你存放 Playwright 测试报告的路径
