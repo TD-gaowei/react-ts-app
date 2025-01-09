@@ -104,8 +104,10 @@ jobs:
       - name: Run Playwright tests
         run: npm run playwright
 
-      - name: Upload Playwright test results
+      # 4. Upload screenshots if any test fails
+      - name: Upload screenshots on failure
+        if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: playwright-test-results
-          path: visual-regression-testing # 修改为你存放 Playwright 测试报告的路径
+          name: playwright-screenshots
+          path: ./screenshots/
