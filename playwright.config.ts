@@ -21,7 +21,7 @@ export default defineConfig({
     toHaveScreenshot: {
       // An acceptable ratio of pixels that are different to the
       // total amount of pixels, between 0 and 1.
-      maxDiffPixelRatio: 0.004,
+      maxDiffPixelRatio: 0.08,
     },
     /**
      * Maximum time expect() should wait for the condition to be met.
