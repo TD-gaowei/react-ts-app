@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "type-check": "npx tsc --noEmit",
     "test": "vitest",
-    "playwright": "npx playwright test -p 'webkit'"
+    "playwright": "npx playwright test"
   },
   "dependencies": {
     "playwright": "1.44.1",
