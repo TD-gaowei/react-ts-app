@@ -9,8 +9,31 @@ on:
       - main
 
 jobs:
+  cspell:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 步骤 1: 检出代码
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 步骤 2: 设置 Node.js 环境
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      # 步骤 3: 安装依赖
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      # 步骤 4: 运行 CSpell 检查
+      - name: Run CSpell
+        run: npm run cspell
+
   eslint:
     runs-on: ubuntu-latest
+    needs: ["cspell"] # 确保 eslint 依赖 cspell 作业
 
     steps:
       # 步骤 1: 检出代码

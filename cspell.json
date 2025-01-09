@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "dictionaryDefinitions": [
+    {
+      "name": "typo-words",
+      "path": "./typo-words.txt",
+      "addWords": true
+    }
+  ],
+  "dictionaries": ["typo-words"],
+  "ignorePaths": ["node_modules", "dist", "build"]
+}
