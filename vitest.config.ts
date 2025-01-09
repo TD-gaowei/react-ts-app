@@ -12,6 +12,7 @@ export default defineConfig({
     exclude: [
       "**/node_modules/**", // 排除 node_modules 目录
       "**/dist/**", // 排除 dist 目录
+      "**/visual-regression-testing/**", // 排除 visual-regression-testing 目录
     ],
 
     // 测试运行的超时时间
