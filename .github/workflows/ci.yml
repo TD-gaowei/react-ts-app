@@ -76,3 +76,29 @@ jobs:
       # 步骤 4: 运行单元测试
       - name: Run unit tests
         run: npm run test # 运行单元测试命令
+
+  visual-regression-testing:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    needs: [eslint]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "16"
+      - name: Install dependencies
+        run: npm install -g yarn && yarn
+
+      - name: Install Playwright Browsers
+        run: yarn playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: yarn playwright test
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

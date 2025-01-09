@@ -3,11 +3,11 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 
-const age: number = 18;
+const rootEl = document.getElementById("root") as HTMLElement;
 
-console.log(age);
+const app = createRoot(rootEl);
 
-createRoot(document.getElementById("root")!).render(
+app.render(
   <StrictMode>
     <App />
   </StrictMode>

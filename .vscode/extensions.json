@@ -1,0 +1,6 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint", // 推荐 ESLint 扩展
+    "esbenp.prettier-vscode" // 推荐 Prettier 扩展
+  ]
+}

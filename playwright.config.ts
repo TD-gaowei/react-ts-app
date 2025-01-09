@@ -1,5 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const DEVICE_DESKTOP_CHROME = "Desktop Chrome";
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -13,6 +15,19 @@ import { defineConfig, devices } from "@playwright/test";
  */
 export default defineConfig({
   testDir: "./visual-regression-testing",
+  snapshotDir: "./visual-regression-testing/snapshots",
+  expect: {
+    toHaveScreenshot: {
+      // An acceptable ratio of pixels that are different to the
+      // total amount of pixels, between 0 and 1.
+      maxDiffPixelRatio: 0.004,
+    },
+    /**
+     * Maximum time expect() should wait for the condition to be met.
+     * For example in `await expect(locator).toHaveText();`
+     */
+    timeout: 15000,
+  },
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -35,30 +50,26 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      name: "",
+      use: { ...devices[DEVICE_DESKTOP_CHROME] },
     },
-
     // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
+    //   name: "firefox",
+    //   use: { ...devices["Desktop Firefox"] },
     // },
-
     // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
+    //   name: "webkit",
+    //   use: { ...devices["Desktop Safari"] },
     // },
-
-    /* Test against mobile viewports. */
+    // /* Test against mobile viewports. */
     // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
+    //   name: "Mobile Chrome",
+    //   use: { ...devices["Pixel 5"] },
     // },
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
     // },
-
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
@@ -71,9 +82,9 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://127.0.0.1:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  webServer: {
+    command: "npm run dev",
+    port: 3001,
+    reuseExistingServer: true,
+  },
 });
