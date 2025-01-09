@@ -25,7 +25,7 @@ jobs:
 
       # 步骤 3: 安装依赖
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       # 步骤 4: 运行 ESLint 检查
       - name: Run ESLint
@@ -48,7 +48,7 @@ jobs:
 
       # 步骤 3: 安装依赖
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       # 步骤 4: 进行 TypeScript 类型检查
       - name: Type-check with tsc
@@ -71,7 +71,7 @@ jobs:
 
       # 步骤 3: 安装依赖
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       # 步骤 4: 运行单元测试
       - name: Run unit tests
@@ -88,13 +88,13 @@ jobs:
         with:
           node-version: "16"
       - name: Install dependencies
-        run: npm install -g yarn && yarn
+        run: npm install --legacy-peer-deps
 
       - name: Install Playwright Browsers
-        run: yarn playwright install --with-deps
+        run: npm i playwright --with-deps
 
       - name: Run Playwright tests
-        run: yarn playwright test
+        run: npx playwright test
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
