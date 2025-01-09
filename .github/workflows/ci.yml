@@ -10,7 +10,7 @@ on:
 
 jobs:
   cspell:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       # 步骤 1: 检出代码
@@ -32,7 +32,7 @@ jobs:
         run: npm run cspell
 
   eslint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: ["cspell"] # 确保 eslint 依赖 cspell 作业
 
     steps:
@@ -55,7 +55,7 @@ jobs:
         run: npm run lint # 假设你的 `package.json` 中有配置 lint 命令
 
   type-check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: eslint # 确保 type-check 依赖 eslint 作业
 
     steps:
@@ -78,7 +78,7 @@ jobs:
         run: npm run type-check # 运行类型检查命令
 
   unit-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [eslint] # 确保 test 依赖 eslint 作业
 
     steps:
@@ -102,7 +102,7 @@ jobs:
 
   visual-regression-testing:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [eslint]
 
     steps:
