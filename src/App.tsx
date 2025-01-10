@@ -6,6 +6,10 @@ import "./App.css";
 function App(): React.ReactElement {
   const [count, setCount] = useState<number>(0);
 
+  const onSendError = () => {
+    console.log(a);
+  };
+
   return (
     <>
       <div>
@@ -28,8 +32,7 @@ function App(): React.ReactElement {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-
-      <button onClick={() => {throw new Error("This is your first error!");}}>Break the world</button>;
+      <button onClick={onSendError}>Break the world</button>;
     </>
   );
 }
