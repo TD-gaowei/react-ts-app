@@ -9,6 +9,7 @@ const app = createRoot(rootEl);
 
 import * as Sentry from "@sentry/react";
 
+// 错误追踪，还提供性能监控、基础设施监控、日志管理等多种功能。
 Sentry.init({
   dsn: "https://3b944d33865383adfcadee64e2e48f6a@o1233344.ingest.us.sentry.io/4508618012098560",
   integrations: [

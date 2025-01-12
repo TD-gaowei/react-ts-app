@@ -25,4 +25,3 @@ export const useCountStore = create<CountState>((set) => ({
     set((state) => ({ count: state.count - 1 }));
   },
 }));
-

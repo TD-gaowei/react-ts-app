@@ -1,0 +1,23 @@
+name: DeepCode Analysis
+
+on:
+  pull_request:
+    paths:
+      - "**/*.js" # 针对 React 项目，分析 .js 文件
+      - "**/*.jsx" # 针对 React 项目，分析 .jsx 文件
+      - "**/*.ts" # 分析 TypeScript 文件
+      - "**/*.tsx" # 分析 React + TypeScript 项目
+      - "**/*.html" # 如果你有 HTML 文件，也可以分析
+
+jobs:
+  deepcode-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run DeepCode Analysis
+        uses: deepcode-ai/github-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
