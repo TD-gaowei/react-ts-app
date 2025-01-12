@@ -5,3 +5,5 @@ function calculateTotalPrice1() {
 function calculateTotalPrice2() {
   return price * quantity + tax;
 }
+
+console.log(a);
